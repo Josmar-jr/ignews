@@ -6,7 +6,6 @@ import { stripe } from 'services/stripe';
 import { SubscribeButton } from 'components/SubscribeButton';
 
 import styles from './home.module.scss';
-import { getSession } from 'next-auth/client';
 
 type HomeProps = {
   product: {
@@ -16,10 +15,6 @@ type HomeProps = {
 };
 
 const Home: NextPage<HomeProps> = ({ product }) => {
-  async function ai() {
-    const session = await getSession();
-    console.log(session);
-  }
   return (
     <>
       <Head>
@@ -37,7 +32,6 @@ const Home: NextPage<HomeProps> = ({ product }) => {
             <span>for {product.amount} month</span>
           </p>
           <SubscribeButton priceId={product.priceId} />
-          <button onClick={ai}>dale</button>
         </section>
 
         <img src="/images/avatar.svg" alt="Girl coding" />

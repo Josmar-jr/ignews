@@ -1,4 +1,5 @@
-import { SignInButton } from 'components/SignInButton';
+import { ActiveLink } from '../ActiveLink';
+import { SignInButton } from '../SignInButton';
 import styles from './styles.module.scss';
 
 export function Header() {
@@ -8,10 +9,12 @@ export function Header() {
         <img src="/images/logo.svg" alt="Logo Ig.News" />
 
         <nav>
-          <a href="#" className={styles.active}>
-            Home
-          </a>
-          <a href="#">Posts</a>
+          <ActiveLink activeClassName={styles.active} href="/">
+            <a className={styles.active}>Home</a>
+          </ActiveLink>
+          <ActiveLink activeClassName={styles.active} href="/posts" prefetch>
+            <a>Posts</a>
+          </ActiveLink>
         </nav>
 
         <SignInButton />
