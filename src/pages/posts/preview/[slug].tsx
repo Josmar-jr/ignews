@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 import Link from 'next/link';
 
-import { getPrismicClient } from 'services/prismic';
+import { getPrismicClient } from '../../../services/prismic';
 
 import styles from '../post.module.scss';
 import { useSession } from 'next-auth/client';
@@ -15,7 +15,7 @@ type PostPreviewProps = {
     slug: string;
     title: string;
     content: string;
-    updatedAt: Date;
+    updatedAt: string;
   };
 };
 
