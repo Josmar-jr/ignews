@@ -4,15 +4,15 @@ import Head from 'next/head';
 import Prismic from '@prismicio/client';
 import { RichText } from 'prismic-dom';
 
-import { getPrismicClient } from 'services/prismic';
+import { getPrismicClient } from '../../services/prismic';
 
 import styles from './styles.module.scss';
 
 type Post = {
   slug: string;
   title: string;
-  except: string;
-  updatedAt: Date;
+  excerpt: string;
+  updatedAt: string;
 };
 
 type PostsProps = {
@@ -33,7 +33,7 @@ export default function Posts({ posts }: PostsProps) {
               <a>
                 <time>{post.updatedAt}</time>
                 <strong>{post.title}</strong>
-                <p>{post.except}</p>
+                <p>{post.excerpt}</p>
               </a>
             </Link>
           ))}
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
       slug: post.uid,
       title: RichText.asText(post.data.title),
-      except:
+      excerpt:
         post.data.content.find((content) => content.type === 'paragraph')
           ?.text ?? '',
       updatedAt: new Date(post.last_publication_date).toLocaleDateString(
@@ -72,7 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   });
 
-  console.log(JSON.stringify(response, null, 2));
+  // console.log(JSON.stringify(response, null, 2));
 
   return {
     props: { posts },

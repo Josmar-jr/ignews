@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/client';
 import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 
-import { getPrismicClient } from 'services/prismic';
+import { getPrismicClient } from '../../services/prismic';
 
 import styles from './post.module.scss';
 
@@ -12,7 +12,7 @@ type PostProps = {
     slug: string;
     title: string;
     content: string;
-    updatedAt: Date;
+    updatedAt: string;
   };
 };
 
